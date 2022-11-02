@@ -69,8 +69,8 @@ function gameSetup() {
 	textFont('Georgia');
 	eps = 0;
 	noCheese = false;
-	timesEat.splice(0, timesEat.length);
-	costEat.splice(0, costEat.length);
+	timesEat.splice(0, timesEat.lenght);
+	costEat.splice(0, costEat.lenght);
 	//while (reactions.length) { reactions.pop(); }
 	reactions.length = 0;
 	bestEPS = 0;
@@ -171,16 +171,18 @@ function draw() {
 		let height = H / 3;
 		let width = W - W / 20 - W / 20;
 		let step = width / reactions.length;
-		fill(55,55,55);
-		rect(xup, yup, width, height);
+		//fill(55,55,55);
+		//rect(xup, yup, width, height);
 		fill(0, 255, 200);
 		verticalthing = 8;
 
 		let dist = max_of_array - min_of_array;
+		stroke('rgb(55,55,55)');
 		for (let j = 0; j < verticalthing; j++)
 		{
 			textSize(20);
-			text((min_of_array + j * (dist / verticalthing)).toFixed(0), W / 25, ((verticalthing - j) / verticalthing) * height + 20);
+			text((min_of_array + j * (dist / verticalthing)).toFixed(0), W / 25, ((verticalthing - 1.125*j + 0.5) / verticalthing) * height + 20);
+			line(W / 13, ((verticalthing - 1.125*j + 0.5) / verticalthing) * height + 20, 0.95*W, ((verticalthing - 1.125*j + 0.5) / verticalthing) * height + 20)
 		}
 
 		textSize(30);
@@ -298,16 +300,16 @@ function draw() {
 		fill(250, 150, 200);
 
 		text("Stats", W / placeleft, H - (H / heightlevel) * 9);
-		text("try C B R S keys", W / placeleft, H - (H / heightlevel) * 1);
+		
 		textStyle(ITALIC);
 		fill(0, 255, 200);
 		text("Time", W / placeleft, H - (H / heightlevel) * 8);
 		text("Average balls/s", W / placeleft, H - (H / heightlevel) * 7);
-		text("Average reaction", W / placeleft, H - (H / heightlevel) * 6);
-		text("Balls eaten", W / placeleft, H - (H / heightlevel) * 5);
-		text("Scores eaten", W / placeleft, H - (H / heightlevel) * 4);
-		text("Maximum eat/s", W / placeleft, H - (H / heightlevel) * 3);
-		text("Average eat/s", W / placeleft, H - (H / heightlevel) * 2);
+		//text("Average reaction", W / placeleft, H - (H / heightlevel) * 6);
+		text("Balls eaten", W / placeleft, H - (H / heightlevel) * 6);
+		//text("Scores eaten", W / placeleft, H - (H / heightlevel) * 4);
+		text("Fastest 5 Second Average", W / placeleft, H - (H / heightlevel) * 5);
+		text("Average Reaction", W / placeleft, H - (H / heightlevel) * 4);
 		textAlign(CENTER, CENTER);
 
 		let placemiddle = 2;
@@ -317,12 +319,12 @@ function draw() {
 		fill(0, 255, 200);
 		textStyle(NORMAL);
 		text((newTime).toFixed(2), W / placemiddle, H - (H / heightlevel) * 8);
-		text(bps.toFixed(2), W / placemiddle, H - (H / heightlevel) * 7);
-		text(ravg, W / placemiddle, H - (H / heightlevel) * 6);
-		text(ballcounter, W / placemiddle, H - (H / heightlevel) * 5);
-		text(overall.toFixed(0), W / placemiddle, H - (H / heightlevel) * 4);
-		text(bestEPS.toFixed(0), W / placemiddle, H - (H / heightlevel) * 3);
-		text((overall / newTime).toFixed(2), W / placemiddle, H - (H / heightlevel) * 2);
+		text(((overall / newTime)/35).toFixed(2), W / placemiddle, H - (H / heightlevel) * 7);
+		//text(ravg, W / placemiddle, H - (H / heightlevel) * 6);
+		text(ballcounter, W / placemiddle, H - (H / heightlevel) * 6);
+		//text((overall/35).toFixed(2), W / placemiddle, H - (H / heightlevel) * 4);
+		text((1000/(bestEPS/35)).toFixed(1), W / placemiddle, H - (H / heightlevel) * 5);
+		text((1000/((overall / newTime)/35)).toFixed(1), W / placemiddle, H - (H / heightlevel) * 4);
 
 		let placeright = 8;
 		textStyle(BOLD);
@@ -332,19 +334,20 @@ function draw() {
 		fill(0, 255, 200);
 		text(highScore.toFixed(2), W - W / placeright, H - (H / heightlevel) * 8);
 		text(bpsHS.toFixed(2), W - W / placeright, H - (H / heightlevel) * 7);
-		text(reactionHS, W - W / placeright, H - (H / heightlevel) * 6);
-		text(ballsHS, W - W / placeright, H - (H / heightlevel) * 5);
-		text(eatenHS.toFixed(0), W - W / placeright, H - (H / heightlevel) * 4);
-		text(maxepsHS.toFixed(0), W - W / placeright, H - (H / heightlevel) * 3);
-		text(hs_avg.toFixed(2), W - W / placeright, H - (H / heightlevel) * 2);
+		//text(reactionHS, W - W / placeright, H - (H / heightlevel) * 6);
+		text(ballsHS, W - W / placeright, H - (H / heightlevel) * 6);
+		//text((eatenHS/35).toFixed(2), W - W / placeright, H - (H / heightlevel) * 4);
+		text((1000/(maxepsHS/35)).toFixed(1), W - W / placeright, H - (H / heightlevel) * 5);
+		text((1000/(hs_avg/35)).toFixed(1), W - W / placeright, H - (H / heightlevel) * 4);
 		//textAlign(CENTER,CENTER);
 
 		textStyle(BOLD);
 		fill(250, 150, 200);
 		textSize(20);
 
-		text("Press H to reset HS", W - W / placeright, H - (H / heightlevel) * 1);
-		text("Click anywhere to play", W - W / placemiddle, H - (H / heightlevel) * 1);
+		text("Try C B R S O keys", W / placeleft + 90, H - (H / heightlevel) * 3);
+		text("Press H to reset HS", W - W / placeright, H - (H / heightlevel) * 3);
+		text("Click anywhere to play", W - W / placemiddle, H - (H / heightlevel) * 3);
 	}
 }
 
