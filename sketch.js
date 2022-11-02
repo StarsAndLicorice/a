@@ -1,5 +1,5 @@
 let bps;
-let outlierconst = 0.07;
+let outlierconst = 0;
 let newr = []
 let ravg = 9999;
 let alpha = 255;
