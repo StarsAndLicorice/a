@@ -171,10 +171,10 @@ function draw() {
 		let height = H / 3;
 		let width = W - W / 20 - W / 20;
 		let step = width / reactions.length;
-		fill(10,100,0);
+		fill(55,55,55);
 		rect(xup, yup, width, height);
 		fill(0, 255, 200);
-		verticalthing = 7;
+		verticalthing = 8;
 
 		let dist = max_of_array - min_of_array;
 		for (let j = 0; j < verticalthing; j++)
@@ -192,7 +192,7 @@ function draw() {
 			let balanced_i = map(reactions[i], min_of_array, max_of_array, 0, H / 3);
 			if (i > 0)
 			{
-				line(i * step + xup, last, (i + 1) * step + xup, height + yup - balanced_i);
+				line(i * step + xup, last, (i + 1) * step + xup, height + yup - balanced_i); // line(oldx, oldy, newx, newy)
 			}
 			last = height + yup - balanced_i;
 		}
