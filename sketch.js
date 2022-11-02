@@ -69,8 +69,8 @@ function gameSetup() {
 	textFont('Georgia');
 	eps = 0;
 	noCheese = false;
-	timesEat.splice(0, timesEat.lenght);
-	costEat.splice(0, costEat.lenght);
+	timesEat.splice(0, timesEat.length);
+	costEat.splice(0, costEat.length);
 	//while (reactions.length) { reactions.pop(); }
 	reactions.length = 0;
 	bestEPS = 0;
