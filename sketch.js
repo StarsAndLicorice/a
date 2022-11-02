@@ -171,8 +171,8 @@ function draw() {
 		let height = H / 3;
 		let width = W - W / 20 - W / 20;
 		let step = width / reactions.length;
-		//fill(10,100,0);
-		//rect(xup, yup, width, height);
+		fill(10,100,0);
+		rect(xup, yup, width, height);
 		fill(0, 255, 200);
 		verticalthing = 7;
 
