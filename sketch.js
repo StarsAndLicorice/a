@@ -53,7 +53,7 @@ let BLACK;
 
 let eatsound;
 
-let newCursor = false;
+let newCursor = true;
 
 function gameSetup() {
 	ballcounter = 0;
@@ -113,7 +113,7 @@ function preload() {
 		ballsHS = getItem(6) / 1000;
 	}
 
-	//eatsound = loadSound("idk.wav");
+	eatsound = loadSound("idk.wav");
 }
 
 let cnv;
